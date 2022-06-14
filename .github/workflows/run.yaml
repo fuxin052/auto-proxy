@@ -1,0 +1,19 @@
+name: run_py
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: build
+        run: |
+          base64 rules > autoproxy.txt
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@4.0.0
+        with: 
+          branch: build
+          folder: .
