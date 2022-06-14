@@ -1,7 +1,6 @@
-name: run_py
+name: build
 
 on:
-  workflow_dispatch:
   push:
     branches: [main]
 
@@ -9,6 +8,9 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     steps:
+      - name: show file
+        run: |
+          ls -al
       - name: build
         run: |
           base64 rules > autoproxy.txt
